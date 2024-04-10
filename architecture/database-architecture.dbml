@@ -1,0 +1,48 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+Project project_name {
+  database_type: 'PostgreSQL'
+  Note: 'Fintech project'
+}
+
+Table transactions {
+  id integer [primary key, increment]
+  from_account_id integer [not null]
+  to_account_id integer [not null]
+  amount bigint [not null, note: "Have be positive"]
+  created_at timestamp [default: `now()`]
+  indexes {
+    from_account_id [name: "from_account_id"]
+    to_account_id [name: "to_account_id"]
+    (from_account_id, to_account_id) [name: "from_to_account_id"]
+  }
+}
+
+Table  accounts{
+  id integer [primary key, increment]
+  username varchar [not null]
+  ammount bigint [not null]
+  currency varchar [not null]
+  created_at timestamp [default: `now()`]
+  Indexes {
+    username [name: "account_username"]
+  }
+}
+
+Table entries {
+  id integer [primary key]
+  amount varchar [not null, note: "can be negative"]
+  account_id integer [not null]
+  created_at timestamp [default:  `now()`]
+  indexes {
+    account_id [name: "entries_account_id"]
+  }
+}
+
+
+
+Ref: entries.account_id > accounts.id // many-to-one
+
+Ref: accounts.id < transactions.from_account_id
+
+Ref: accounts.id < transactions.to_account_id
