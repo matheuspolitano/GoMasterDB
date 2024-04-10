@@ -1,4 +1,5 @@
 // Use DBML to define your database structure
+
 // Docs: https://dbml.dbdiagram.io/docs
 Project project_name {
   database_type: 'PostgreSQL'
