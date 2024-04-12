@@ -3,7 +3,7 @@ CREATE TABLE "transactions" (
   "from_account_id" integer NOT NULL,
   "to_account_id" integer NOT NULL,
   "amount" bigint NOT NULL,
-  "created_at" timestamp DEFAULT (now())
+  "created_at" timestamp NOT NULL DEFAULT (now())
 );
 
 CREATE TABLE "accounts" (
@@ -11,14 +11,14 @@ CREATE TABLE "accounts" (
   "username" varchar NOT NULL,
   "ammount" bigint NOT NULL,
   "currency" varchar NOT NULL,
-  "created_at" timestamp DEFAULT (now())
+  "created_at" timestamp NOT NULL DEFAULT (now())
 );
 
 CREATE TABLE "entries" (
   "id" integer PRIMARY KEY,
   "amount" varchar NOT NULL,
   "account_id" integer NOT NULL,
-  "created_at" timestamp DEFAULT (now())
+  "created_at" timestamp NOT NULL DEFAULT (now())
 );
 
 CREATE INDEX "from_account_id" ON "transactions" ("from_account_id");
