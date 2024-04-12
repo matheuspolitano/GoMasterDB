@@ -51,3 +51,13 @@ func (q *Queries) GetAccount(ctx context.Context, id int32) (Account, error) {
 	)
 	return i, err
 }
+
+const removeAccount = `-- name: RemoveAccount :exec
+DELETE FROM accounts
+where id=$1
+`
+
+func (q *Queries) RemoveAccount(ctx context.Context, id int32) error {
+	_, err := q.db.ExecContext(ctx, removeAccount, id)
+	return err
+}

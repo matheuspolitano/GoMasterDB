@@ -6,3 +6,7 @@ WHERE id=$1;
 INSERT INTO accounts (username, ammount, currency) 
 VALUES ($1, $2, $3)
 RETURNING *;
+
+-- name: RemoveAccount :exec
+DELETE FROM accounts
+where id=$1;
