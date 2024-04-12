@@ -19,3 +19,6 @@ migrationdown:
 
 sqlc:
 	sqlc generate
+
+test:
+	go test ./...	
