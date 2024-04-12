@@ -51,8 +51,8 @@ Maybe you can mention me or this repo in the acknowledgements too
   * [Features](#dart-features)
 - [Getting Started](#toolbox-getting-started)
   * [Prerequisites](#bangbang-prerequisites)
-  * [Installation](#gear-installation)
-  * [Running Tests](#test_tube-running-tests)
+  <!-- * [Installation](#gear-installation)
+  * [Running Tests](#test_tube-running-tests) -->
   <!-- * [Run Locally](#running-run-locally)
   * [Deployment](#triangular_flag_on_post-deployment) -->
 <!-- - [Usage](#eyes-usage)
@@ -128,25 +128,25 @@ This project uses SQLC to automate database process
 ```
 
 <!-- Installation -->
-### :gear: Installation
+<!-- ### :gear: Installation
 
 
 ```bash
   yarn install my-project
   cd my-project
 ```
-   
+    -->
 <!-- Running Tests -->
-### :test_tube: Running Tests
+<!-- ### :test_tube: Running Tests
 
 To run tests, run the following command
 
 ```bash
   make run test
-```
+``` -->
 
 <!-- Run Locally -->
-### :running: Run Locally
+<!-- ### :running: Run Locally
 
 Clone the project
 
@@ -158,7 +158,7 @@ Go to the project directory
 
 ```bash
   cd GoMasterDB
-```
+``` -->
 
 
 
@@ -179,13 +179,13 @@ To deploy this project run
 Use this space to tell a little more about your project and how it can be used. Show additional screenshots, code samples, demos or link to other resources. -->
 
 
-```javascript
+<!-- ```javascript
 import Component from 'my-project'
 
 function App() {
   return <Component />
 }
-```
+``` -->
 
 <!-- Roadmap -->
 <!-- ## :compass: Roadmap
