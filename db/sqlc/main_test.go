@@ -7,17 +7,18 @@ import (
 	"testing"
 
 	_ "github.com/lib/pq"
-)
-
-const (
-	dbDriver  = "postgres"
-	conString = "postgresql://root:MP@TEST123@localhost:5432/fintech_db?sslmode=disable"
+	"github.com/matheuspolitano/GoMasterDB/utils"
 )
 
 var testQueries *Queries
 
 func TestMain(m *testing.M) {
-	conn, err := sql.Open(dbDriver, conString)
+	conf, err := utils.LoadConfig("../..")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	conn, err := sql.Open(conf.DbDriver, conf.DbConnetionString)
 	if err != nil {
 		log.Fatal(err)
 	}
