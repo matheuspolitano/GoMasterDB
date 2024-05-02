@@ -4,14 +4,15 @@ import (
 	"context"
 	"testing"
 
+	"github.com/matheuspolitano/GoMasterDB/utils"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestAddAccount(t *testing.T) {
 	accountParams := AddAccountParams{
-		Username: "Matheus",
-		Ammount:  12,
-		Currency: "USD",
+		Username: utils.RandUsername(),
+		Ammount:  utils.RandAmount(),
+		Currency: utils.RandCurrency(),
 	}
 	account, err := testQueries.AddAccount(context.Background(), accountParams)
 	assert.NoError(t, err)
