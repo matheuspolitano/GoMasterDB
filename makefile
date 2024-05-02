@@ -1,5 +1,3 @@
-TARGET = "myfile.txt"
-TEXT = "matheus"
 DBNAME = fintech_db
 CONTAINER_NAME = postgres-example
 IMAGE = postgres:12.0-alpine
@@ -10,17 +8,17 @@ POSTGRESQL_URL = "postgresql://root:MP@TEST123@localhost:5432/fintech_db?sslmode
 .PHONY: postgres
 
 
-
-
 postgres:
-	@var1=$$(docker ps -aq -f name=^$(CONTAINER_NAME)$$);\
-	if [ "$$var1" ]; then \
-		echo "Container $(CONTAINER_NAME) exist"; \
-		if [ $$(docker ps -q -f name=^$(CONTAINER_NAME)$$) ]; then \
+	@if [ "$$(docker ps -aq -f name=$(CONTAINER_NAME))" ]; then \
+		echo "Container $(CONTAINER_NAME) exists"; \
+		if [ "$$(docker ps -q -f name=$(CONTAINER_NAME))" ]; then \
 			echo "Docker $(CONTAINER_NAME) is running"; \
-		fi \
+		else \
+			echo "Docker $(CONTAINER_NAME) is stopped"; \
+			docker start $(CONTAINER_NAME); \
+		fi; \
 	else \
-		docker run --name $(CONTAINER_NAME) -p $(PORTS) -e $(ENV_VARS) -d $(IMAGE); \
+		docker run --name $(CONTAINER_NAME) -p $(PORTS) -e POSTGRES_PASSWORD=MP@TEST123 -e POSTGRES_USER=root -d $(IMAGE); \
 	fi
 
 createdb:
